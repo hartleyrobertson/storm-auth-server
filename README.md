@@ -4,7 +4,7 @@
 Node auth server for style.com api
 
 ### Installation ###
-npm install
+```npm install```
 
 ### Run ###
-npm run dev
+```npm run dev```
