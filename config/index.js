@@ -38,8 +38,29 @@ var conf = convict({
             default: 8000,
             env: 'LISTEN_PORT'
         }
+    },
+    stormPath: {
+        key: {
+            doc: '',
+            format: String,
+            default: '1RB6YAZWLMT8YAS8ODF5L0U7E',   // dev
+            env: 'STORM_KEY'
+        }
+    },
+    auth: {
+        secret: {
+            doc: '',
+            format: String,
+            default: 'sugarbears',
+            env: 'AUTH_SECRET'
+        },
+        ttl: {
+            doc: '',
+            format: Number,
+            default: 24,
+            env: 'AUTH_TTL'
+        }
     }
-
 });
 
 module.exports = conf;

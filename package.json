@@ -12,6 +12,7 @@
   "dependencies": {
     "boom": "^2.9.0",
     "convict": "^1.0.1",
+    "crypto": "0.0.3",
     "h2o2": "^4.0.1",
     "hapi": "^9.0.2",
     "hapi-swaggered": "^2.3.0",

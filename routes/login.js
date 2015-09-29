@@ -3,7 +3,14 @@
  */
 
 var joi = require('joi'),
-    boom = require('boom');
+    boom = require('boom'),
+    crypto = require('crypto');
+    config = require('../config');
+
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+h);
+    return this;
+}
 
 exports.register = function(server, options, next) {
     server.route({
@@ -36,7 +43,18 @@ exports.register = function(server, options, next) {
 
             app.authenticateAccount(payload, function (err, result) {
                 if (err) return reply(boom.badRequest(err));
-                return reply(result.account);
+
+                var ttl = new Date().addHours(config.get('auth.ttl')).getTime(),
+                    token = crypto.createHmac('sha1', config.get('auth.secret'))
+                    .update(ttl.toString())
+                    .digest("hex");
+
+                var response = {
+                    access_token: token,
+                    ttl: ttl
+                };
+
+                return reply(response);
             });
         }
     });
