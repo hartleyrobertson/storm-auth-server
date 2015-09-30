@@ -49,10 +49,7 @@ exports.register = function(server, options, next) {
                     .update(ttl.toString())
                     .digest("hex");
 
-                var response = {
-                    access_token: token,
-                    ttl: ttl
-                };
+                var response = { access_token: new Buffer(ttl + ':' + token).toString('base64')};
 
                 return reply(response);
             });
