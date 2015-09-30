@@ -1,7 +1,7 @@
 # Storm Auth Server #
 
 ### About ###
-Node auth server
+Node auth server for style.com api
 
 ### Installation ###
 ```npm install```
